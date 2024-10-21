@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  test:
+  IntegrationTest:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,13 +27,34 @@ jobs:
         run: echo PowerCell12
   
       - name: Install packages
+        run: npm install
+
+  
+      - name: run the unit tests  
+        run: npm run test:unit
+
+
+
+  UITest:
+    needs: IntegrationTest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name:  checks-out repository
+        uses: actions/checkout@v4
+      
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+  
+      - name: Install packages
         run: npm install &  npx playwright install  
 
       - name: Start the server
         run: npm start & 
   
-      - name: run the unit tests  
-        run: npm run test:unit
 
       - name: run the ui tests
-        run: npm run test:ui
+        run: npm run test:UI
