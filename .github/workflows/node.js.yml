@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,3 +34,6 @@ jobs:
   
       - name: run the unit tests  
         run: npm run test:unit
+
+      - name: run the ui tests
+        run: npm run test:ui
