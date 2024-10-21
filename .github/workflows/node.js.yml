@@ -14,18 +14,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js 18
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18x
-        cache: 'npm'
-
-    - name: display name
-      run: echo PowerCell12
-
-    - name: Install packages
-      run: npm install 
-
-    - name: run the unit tests  
-    - run: npm test:unit
+      - name:  checks-out repository
+        uses: actions/checkout@v4
+      
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+  
+      - name: display name
+        run: echo PowerCell12
+  
+      - name: Install packages
+        run: npm install 
+  
+      - name: run the unit tests  
+        run: npm test:unit
