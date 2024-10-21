@@ -27,7 +27,7 @@ jobs:
         run: echo PowerCell12
   
       - name: Install packages
-        run: npm install 
+        run: npm install &  npx playwright install  
 
       - name: Start the server
         run: npm start & 
